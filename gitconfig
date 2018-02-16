@@ -1,0 +1,23 @@
+[core]
+  excludesfile = .gitignore_global
+[color]
+  ui = auto
+  breanch = auto
+  diff = auto
+  interactive = auto
+  status = auto
+[commit]
+  verbose = true
+[pull]
+  rebase = true
+[branch]
+  autosetuprebase = always
+[push]
+  default = simple
+[user]
+	email = maxime.mehio@epita.fr
+  name = Maxime Mehio
+[alias]
+  lga = log --decorate --graph --all \
+    --pretty=format:'%Cred%<(15)%an%Creset%Cgreen%<(17)(%ar): \
+    %Creset%C(yellow)%h:%Creset%C(auto)%d%Creset %s'
