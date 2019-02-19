@@ -24,8 +24,9 @@ inoremap (( (
 inoremap "  ""<Left>
 inoremap "" ""
 
-inoremap '  ''<Left>
-inoremap '' ''
+inoremap '  '
+inoremap '' ''<Left>
+inoremap ''' ''
 
 inoremap <  ><Left><
 inoremap << <<
