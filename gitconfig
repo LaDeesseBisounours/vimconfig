@@ -9,7 +9,7 @@
 [commit]
   verbose = true
 [pull]
-  rebase = true
+  rebase = false
 [branch]
   autosetuprebase = always
 [push]
