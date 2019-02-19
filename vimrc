@@ -7,11 +7,13 @@ set tabstop=2
 set list
 set shiftwidth=2
 set expandtab
+set textwidth=90
+set virtualedit=all
 
 inoremap jk <Esc>
 inoremap kj <Esc>
 
-inoremap {  {<Return>}<Up><Right><Return>
+inoremap {  {}<Left>
 inoremap {{ {
 inoremap {} {}
 
@@ -21,6 +23,9 @@ inoremap (( (
 
 inoremap "  ""<Left>
 inoremap "" ""
+
+inoremap '  ''<Left>
+inoremap '' ''
 
 inoremap <  ><Left><
 inoremap << <<
@@ -32,7 +37,7 @@ inoremap [] []
 inoremap [[ [
 
 inoremap #pr #pragma<Space>once<Return><Return>
-inoremap #inc #include<Space>
+inoremap #inc #include
 
 nnoremap <Backspace> <Del>
 
