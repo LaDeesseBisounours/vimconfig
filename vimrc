@@ -5,13 +5,11 @@ set number
 colo torte
 set tabstop=2
 set list
+set ruler
 set shiftwidth=2
 set expandtab
 set textwidth=90
 set virtualedit=all
-
-inoremap jk <Esc>
-inoremap kj <Esc>
 
 inoremap {  {}<Left>
 inoremap {{ {
