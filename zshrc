@@ -96,7 +96,14 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias grep='grep --color=auto'
-alias i3lock='i3lock -i ~/Downloads/6789350-fantastic-sleeping-cat-wallpaper.png'
+alias i3lock='i3lock -i ~/Pictures/6789350-fantastic-sleeping-cat-wallpaper.png'
 alias gitl1='git log --oneline'
 alias git1l='git log --oneline'
-alias evi='evin'
+export LESS_TERMCAP_mb=$'\E[1;32m'     # begin bold
+export LESS_TERMCAP_md=$'\E[1;91m'     # begin blink
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;33m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+

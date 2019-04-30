@@ -2,7 +2,7 @@ set encoding=utf-8 fileencodings=
 syntax on
 set colorcolumn=80
 set number
-colo torte
+colo perso
 set tabstop=2
 set list
 set ruler
@@ -11,7 +11,7 @@ set expandtab
 set textwidth=90
 set virtualedit=all
 
-inoremap {  {}<Left>
+inoremap {  {}<Left><Return><Esc>O
 inoremap {{ {
 inoremap {} {}
 
@@ -39,5 +39,7 @@ inoremap #pr #pragma<Space>once<Return><Return>
 inoremap #inc #include
 
 nnoremap <Backspace> <Del>
+
+packadd termdebug
 
 filetype plugin indent on
