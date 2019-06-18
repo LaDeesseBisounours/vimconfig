@@ -1,0 +1,11 @@
+:help terminal
+:packadd termdebug
+:Termdebug <program> // open gdb
+
+q<letter> create macro
+@<letter> execute macro q
+@@ repeat macro
+
+
+ctags
+https://courses.cs.washington.edu/courses/cse451/10au/tutorials/tutorial_ctags.html

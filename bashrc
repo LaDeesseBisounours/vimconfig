@@ -36,6 +36,13 @@ alias i3lock='i3lock -i ~/Downloads/6789350-fantastic-sleeping-cat-wallpaper.png
 alias gitl1='git log --oneline'
 alias git1l='git log --oneline'
 #alias evi='evin'
-exec zsh
 
 export QSYS_ROOTDIR="/home/chat/intelFPGA_lite/18.1/quartus/sopc_builder/bin"
+export PATH="/opt/android-build:$PATH"
+
+
+
+export JAVA_HOME="/home/chat/andro/archives/jdk1.6.0_41"
+export DERBY_HOME="/home/chat/andro/archives/jdk1.6.0_41/db"
+export J2SDKDIR="/home/chat/andro/archives/jdk1.6.0_41"
+export PATH="/home/chat/andro/archives/jdk1.6.0_41/bin:/home/chat/andro/archives/jdk1.6.0_41/db/bin:$PATH"

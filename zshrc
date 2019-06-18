@@ -76,7 +76,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
-setxkbmap -layout us -option caps:escape
+setxkbmap -layout us_qwerty-fr -option caps:escape
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
@@ -106,4 +106,4 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
 export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;33m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-
+export PATH=$PATH:~/RTEMS/rtems-arm/bin

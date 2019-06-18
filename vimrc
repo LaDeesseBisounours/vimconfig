@@ -1,7 +1,8 @@
 "Documented vimrc with some explanations
-"remember ^<letter> means Ctrl+<letter>
-" ex: ^n means Ctrl+n
+"remember ^n means Ctrl+n
 
+"remember about keycode 135 (keysym 0xff67, Menu) for case change
+"on one letter ~
 set encoding=utf-8 fileencodings=
 set nocompatible "vim won t pretend to act like vi
 
@@ -19,28 +20,29 @@ set wildmenu  "display all matching files when using tab
 command! Maketags !ctags -R .
 "to jump to definition of a symbol ^]
 "for ambiguous tag g ^]
-"to jump back to where we were before jumping to definition ^t
+"
+"vim keeps track of jumps you made  ^o to go back and ^i to go forward
 
 
 "autocomplete, documentation :help ins-completion
+"(in insert mode)
 "basic one ^n and ^p, they can be managed with variable completion
 "just this file ^x ^n
 "for filenames  ^x ^f
 "using ctags    ^x ^]
-
 
 "file browsing :help netrw-browse-maps
 "also when cursor is on a filename gf will open the file
 
 syntax on "color highlight
 set colorcolumn=80
-set number
+set number "show line numbers
 colo perso
-set tabstop=2
-set list
+set tabstop=2 "sizeof tabs = 2
+set list  "show every special characters
 set ruler
-set shiftwidth=2
-set expandtab
+set shiftwidth=2  "indent size
+set expandtab     "when pressing tab adds spaces instead of tab
 set textwidth=90
 set virtualedit=all
 
@@ -50,7 +52,7 @@ set virtualedit=all
 "
 "}
 "this allow to prewrite some code like the usual for loop
-nnoremap FOR :read $HOME/.vim/snippets/forloop.skeleton<CR>V2j:s/k/
+nnoremap FOR :read $HOME/.vim/snippets/forloop.skeleton<CR>2jV2k:s/k/
 
 "set makeprg=something   allows to set the action to do for compiling
 ":make to build your program
@@ -68,10 +70,11 @@ inoremap () ()
 inoremap (( (
 
 inoremap "  ""<Left>
-inoremap "" ""
+inoremap "" "
+inoremap """ ""
 
-inoremap '  '
-inoremap '' ''<Left>
+inoremap '  ''<Left>
+inoremap '' '
 inoremap ''' ''
 
 inoremap <  ><Left><
@@ -92,6 +95,8 @@ packadd termdebug
 
 hi debugPC term=reverse ctermbg=red guibg=red
 hi debugBreakpoint term=reverse ctermbg=red guibg=red
+map <F11> :setlocal spell! spelllang=en_us<CR>
+map <F12> :setlocal spell! spelllang=fr_FR<CR>
 
 
 filetype plugin indent on
