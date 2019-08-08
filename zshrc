@@ -77,6 +77,8 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 setxkbmap -layout us_qwerty-fr -option caps:escape
+xrdb -merge ~/.Xresources
+# bindkey -v
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
@@ -87,6 +89,8 @@ export EDITOR='vim'
 # ssh
 export SSH_KEY_PATH="~/.ssh/id_rsa"
 
+[ -n "$XTERM_VERSION" ] && transset-df --id "$WINDOWID" 0.9 >/dev/null
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -96,7 +100,7 @@ export SSH_KEY_PATH="~/.ssh/id_rsa"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias grep='grep --color=auto'
-alias i3lock='i3lock -f -i ~/Pictures/6789350-fantastic-sleeping-cat-wallpaper.png'
+alias i3lock='i3lock -f -i ~/Pictures/LockScreens/$(ls ~/Pictures/LockScreens | shuf -n 1)'
 alias gitl1='git log --oneline'
 alias git1l='git log --oneline'
 export LESS_TERMCAP_mb=$'\E[1;32m'     # begin bold
@@ -107,3 +111,4 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;33m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export PATH=$PATH:~/RTEMS/rtems-arm/bin
+export PATH="$PATH:/home/chat/dril/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
