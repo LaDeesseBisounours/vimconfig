@@ -115,9 +115,25 @@ set wildmenu  "display all matching files when using tab
 
 "define :Maketags as running ctags -R .
 "ctags allows to jump to definition of symbols inside projetc (IDE style)
-command! Maketags !ctags -R .
+command! Maketags !cscope -R
 "to jump to definition of a symbol ^]
 "for ambiguous tag g ^]
+"
+:set runtimepath+=~/.vim/bundle/cscope/cscope_maps.vim
+function! LoadCscope()
+  let db = findfile("cscope.out", ".;")
+  if (!empty(db))
+    let path = strpart(db, 0, match(db, "/cscope.out$"))
+    set nocscopeverbose " suppress 'duplicate connection' error
+    exe "cs add " . db . " " . path
+    set cscopeverbose
+  " else add the database pointed to by environment variable 
+  elseif $CSCOPE_DB != "" 
+    cs add $CSCOPE_DB
+  endif
+endfunction
+au BufEnter /* call LoadCscope()
+
 "
 "vim keeps track of jumps you made  ^o to go back and ^i to go forward
 
@@ -142,6 +158,7 @@ set shiftwidth=4  "indent size
 set expandtab     "when pressing tab adds spaces instead of tab
 set textwidth=90
 set virtualedit=all
+set clipboard=unnamed
 
 "snippet exeample
 "file $HOME/.vim/snippets/forloop.skeleton contains something like
@@ -157,6 +174,24 @@ nnoremap FOR :read $HOME/.vim/snippets/forloop.skeleton<CR>2jV2k:s/k/
 ":copen open a widow containing them all
 "
 "
+"cscope set up
+"Code and explanations https://vim.fandom.com/wiki/Cscope
+if has('cscope') 
+  set cscopetag cscopeverbose
+
+  if has('quickfix')
+    set cscopequickfix=s-,c-,d-,i-,t-,e-
+  endif
+
+  cnoreabbrev csa cs add
+  cnoreabbrev csf cs find
+  cnoreabbrev csk cs kill
+  cnoreabbrev csr cs reset
+  cnoreabbrev css cs show
+  cnoreabbrev csh cs help
+
+  command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
+endif
 
 
 inoremap {  {}<Left><Return><Esc>O
@@ -171,9 +206,7 @@ inoremap "  ""<Left>
 inoremap "" "
 inoremap """ ""
 
-inoremap '  ''<Left>
-inoremap '' '
-inoremap ''' ''
+inoremap ''  ''<Left>
 
 inoremap <  ><Left><
 inoremap << <<
@@ -185,15 +218,19 @@ inoremap [] []
 inoremap [[ [
 
 inoremap #pr #pragma<Space>once<Return><Return>
-inoremap #inc #include
+inoremap #inc #include<Space>
 
 nnoremap <Backspace> <Del>
 
 packadd termdebug
 
-hi debugPC term=reverse ctermbg=red guibg=red
-hi debugBreakpoint term=reverse ctermbg=red guibg=red
+hi debugPC ctermbg=red guibg=red
+hi debugBreakpoint ctermbg=blue guibg=blue
+hi Normal ctermbg=NONE guibg=NONE
 map <F11> :setlocal spell! spelllang=en_us<CR>
 map <F12> :setlocal spell! spelllang=fr_FR<CR>
 " for HTML
 let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
+" copy paste using clipboard using xsel
+let @p = ":read !xsel"
+let @y = ":'<,'>w !xsel -i"
