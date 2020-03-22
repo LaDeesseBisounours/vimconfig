@@ -1,4 +1,3 @@
-
 set nocompatible "vim won t pretend to act like vi & required
 filetype off                  " required
 
@@ -7,6 +6,13 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
+
+Plugin 'hdima/python-syntax'
+let python_highlight_all=1
+Plugin 'Neui/cmakecache-syntax.vim'
+
+Plugin 'lifepillar/pgsql.vim'
+
 Plugin 'bfrg/vim-cpp-modern'
 
 " Put all standard C and C++ keywords under Vim's highlight group `Statement`
@@ -115,7 +121,7 @@ set wildmenu  "display all matching files when using tab
 
 "define :Maketags as running ctags -R .
 "ctags allows to jump to definition of symbols inside projetc (IDE style)
-command! Maketags !cscope -R
+command! Maketags !cscope -R -b
 "to jump to definition of a symbol ^]
 "for ambiguous tag g ^]
 "
@@ -148,7 +154,7 @@ au BufEnter /* call LoadCscope()
 "file browsing :help netrw-browse-maps
 "also when cursor is on a filename gf will open the file
 
-syntax on "color highlight
+syntax enable "color highlight
 set colorcolumn=80
 set number "show line numbers
 set tabstop=4 "sizeof tabs = 2
@@ -234,3 +240,4 @@ let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 " copy paste using clipboard using xsel
 let @p = ":read !xsel"
 let @y = ":'<,'>w !xsel -i"
+noremap <F9> :% !clang-format %

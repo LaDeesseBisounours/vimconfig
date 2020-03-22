@@ -49,9 +49,9 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 #
 #sound
-bindsym $mod+F7 exec amixer -q sset Master unmute 3+
-bindsym $mod+F6 exec amixer -q sset Master unmute 3-
-bindsym $mod+F5 exec amixer -q sset Master mute
+bindsym $mod+F7 exec ~/vimconfig/pamixeradd.sh + 5
+bindsym $mod+F6 exec ~/vimconfig/pamixeradd.sh - 5 
+bindsym $mod+F5 exec pamixer --set-volume 0
 bindsym $mod+F1 exec ~/perso/brightness_manager/brightness_manager -500
 bindsym $mod+F2 exec ~/perso/brightness_manager/brightness_manager 500
 bindsym $mod+Shift+F5 exec amixer -q sset Master unmute
@@ -116,7 +116,7 @@ set $ws5 "5"
 set $ws6 "music"
 set $ws7 "mail"
 set $ws8 "slack"
-set $ws9 "9"
+set $ws9 "discord"
 set $ws10 "trash"
 
 # switch to workspace

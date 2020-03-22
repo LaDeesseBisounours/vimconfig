@@ -299,10 +299,10 @@ font:
 #   - Linear
 #
 # Specifying a `duration` of `0` will disable the visual bell.
-#visual_bell:
-#  animation: EaseOutExpo
-#  duration: 0
-#  color: '0xffffff'
+visual_bell:
+  animation: EaseOutExpo
+  duration: 1
+  color: '0xff0000'
 
 # Background opacity
 #
@@ -344,8 +344,8 @@ background_opacity: 0.7
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
+shell:
+  program: /usr/bin/zsh
 #  args:
 #    - --login
 
@@ -392,19 +392,19 @@ background_opacity: 0.7
   # Record all characters and escape sequences as test data.
   #ref_test: false
 
-#mouse:
+mouse:
   # Click settings
   #
   # The `double_click` and `triple_click` settings control the time
   # alacritty should wait for accepting multiple clicks as one double
   # or triple click.
-  #double_click: { threshold: 300 }
-  #triple_click: { threshold: 300 }
+  double_click: { threshold: 300 }
+  triple_click: { threshold: 300 }
 
   # If this is `true`, the cursor is temporarily hidden when typing.
   #hide_when_typing: false
 
-  #url:
+  url:
     # URL launcher
     #
     # This program is executed when clicking on a text which is recognized as a URL.
@@ -416,9 +416,9 @@ background_opacity: 0.7
     #   - (macOS) open
     #   - (Linux/BSD) xdg-open
     #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
+    launcher:
+      program: xdg-open
+      args: []
 
     # URL modifiers
     #

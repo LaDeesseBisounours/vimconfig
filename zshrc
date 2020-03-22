@@ -110,11 +110,7 @@ export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
 export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;33m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
-export PATH=$PATH:~/RTEMS/rtems-arm/bin
-# for dril
-export PATH="$PATH:/home/chat/dril/tools/arm-bcm2708/gcc-linaro-arm-linux-gnueabihf-raspbian-x64/bin"
 #for pfe
-export IDF_PATH="/home/chat/esp/esp-idf"
-export PATH="$PATH:/home/chat/esp/esp-idf/tools:/home/chat/.espressif/tools/xtensa-esp32-elf/esp32-2019r1-8.2.0/xtensa-esp32-elf/bin:/opt/cuda/bin:/home/chat/opt/GNAT/2019/bin:/home/chat/opt/GNAT/2019-arm-elf/bin"
+export PATH="$PATH:/home/chat/.espressif/tools/xtensa-esp32-elf/esp32-2019r1-8.2.0/xtensa-esp32-elf/bin:/opt/cuda/bin:/home/chat/.local/bin"
 
-
+screenfetch

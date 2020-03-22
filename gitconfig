@@ -2,7 +2,7 @@
   excludesfile = .gitignore_global
 [color]
   ui = auto
-  breanch = auto
+  branch = auto
   diff = auto
   interactive = auto
   status = auto
