@@ -113,4 +113,4 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 #for pfe
 export PATH="$PATH:/home/chat/.espressif/tools/xtensa-esp32-elf/esp32-2019r1-8.2.0/xtensa-esp32-elf/bin:/opt/cuda/bin:/home/chat/.local/bin"
 
-screenfetch
+neofetch

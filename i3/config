@@ -185,3 +185,4 @@ bar {
 }
 exec feh --no-fehbg --bg-scale -z ~/Pictures/Wallpapers/*
 exec xcompmgr -c -n
+exec start-pulseaudio-x11
