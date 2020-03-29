@@ -103,6 +103,7 @@ alias grep='grep --color=auto'
 alias i3lock='i3lock -f -i ~/Pictures/LockScreens/$(ls ~/Pictures/LockScreens | shuf -n 1)'
 alias gitl1='git log --oneline'
 alias git1l='git log --oneline'
+alias screenshots='scrot ~/Pictures/Screenshots/%d%b:%Hh%Mm%Ss.png'
 export LESS_TERMCAP_mb=$'\E[1;32m'     # begin bold
 export LESS_TERMCAP_md=$'\E[1;91m'     # begin blink
 export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink

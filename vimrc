@@ -233,6 +233,7 @@ packadd termdebug
 hi debugPC ctermbg=red guibg=red
 hi debugBreakpoint ctermbg=blue guibg=blue
 hi Normal ctermbg=NONE guibg=NONE
+hi NonText ctermbg=NONE guibg=NONE  guifg=NONE ctermfg=NONE
 map <F11> :setlocal spell! spelllang=en_us<CR>
 map <F12> :setlocal spell! spelllang=fr_FR<CR>
 " for HTML
@@ -241,3 +242,7 @@ let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 let @p = ":read !xsel"
 let @y = ":'<,'>w !xsel -i"
 noremap <F9> :% !clang-format %
+" the following is a mapping for copying a line in file and exec a command
+" by passing it as an argument (here command is feh), disowning the executed
+" command
+" map whatever Vy:!feh <C-r>" & disown <Cr><Cr>
