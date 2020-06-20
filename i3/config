@@ -30,7 +30,10 @@ font pango: mononoki 12
 floating_modifier $mod
 
 # start a terminal
+for_window [instance=floating_term] floating enable
 bindsym $mod+Return exec alacritty
+bindsym $mod+Shift+Return exec alacritty --class floating_term
+
 
 # reload background
 bindsym $mod+b exec feh --no-fehbg --bg-scale -z ~/Pictures/Wallpapers/*
@@ -52,14 +55,16 @@ bindsym $mod+d exec dmenu_run
 smart_gaps on
 smart_borders on
 gaps inner 10
-gaps outer 5
+gaps outer 2
 #sound
 bindsym $mod+F7 exec ~/vimconfig/pamixeradd.sh + 5
 bindsym $mod+F6 exec ~/vimconfig/pamixeradd.sh - 5 
 bindsym $mod+F5 exec pamixer --set-volume 0
 bindsym $mod+F1 exec ~/perso/brightness_manager/brightness_manager -500
 bindsym $mod+F2 exec ~/perso/brightness_manager/brightness_manager 500
-bindsym $mod+Shift+F5 exec amixer -q sset Master unmute
+
+bindsym $mod+F3 exec ~/vimconfig/change -
+bindsym $mod+F4 exec ~/vimconfig/change +
 
 # change focus
 bindsym $mod+h focus left
