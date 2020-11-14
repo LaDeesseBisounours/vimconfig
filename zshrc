@@ -112,7 +112,7 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;33m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 #for pfe
-export PATH="$PATH:/home/chat/.espressif/tools/xtensa-esp32-elf/esp32-2019r1-8.2.0/xtensa-esp32-elf/bin:/opt/cuda/bin:/home/chat/.local/bin"
+export PATH="$PATH:/home/chat/.espressif/tools/xtensa-esp32-elf/esp32-2019r1-8.2.0/xtensa-esp32-elf/bin:/opt/cuda/bin:/home/chat/.local/bin:/home/chat/.emacs.d/bin"
 
 # if mode indicator wasn't setup by theme, define default
 if [[ "$MODE_INDICATOR" == "" ]]; then

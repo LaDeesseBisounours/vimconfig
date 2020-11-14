@@ -6,14 +6,7 @@
 [[ $- != *i* ]] && return
 
 export EDITOR=vim
-setxkbmap -layout us -option caps:escape
-
-evin()
-{
-  evince $1 &> /dev/null &
-}
-
-
+setxkbmap -layout us_qwerty-fr -option caps:escape
 
 
 PROMPT_COMMAND=psf
@@ -23,7 +16,8 @@ psf()
 	#if test "$(echo "$?")" == "0" ; then
 		#PS1="\[\033[01;32m\]\w \[\033[01;34m\]$\[\033[00m\] "
 	#else
-		PS1="\[\033[01;32m\]\w \[\033[01;31m\]$?\[\033[01;34m\]$\[\033[00m\] "
+		#PS1="\[\033[01;32m\]\w \[\033[01;31m\]$?\[\033[01;34m\]$\[\033[00m\] "
+        PS1="42sh$ "
 	#fi
 }
 unset color_prompt force_color_prompt

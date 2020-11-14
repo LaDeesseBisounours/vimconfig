@@ -1,0 +1,9 @@
+#!/bin/bash
+#pamixer --set-volume $(($(pamixer --get-volume) + 10))
+
+
+if [[ $2 =~ ^[0-9]+$ ]]; then
+    if [ "$1" == "+" ] || [ "$1" == "-" ] ; then
+        pamixer --set-volume $(($(pamixer --get-volume) $1 $2))
+    fi
+fi

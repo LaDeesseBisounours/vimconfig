@@ -50,15 +50,15 @@ let g:rainbow_conf = {
 
 Plugin 'nanotech/jellybeans.vim'
 
-"Plugin 'jaxbot/semantic-highlight.vim'
+Plugin 'jaxbot/semantic-highlight.vim'
 
 "Plugin 'bbchung/clighter8'
 
 :nnoremap <F8> :SemanticHighlightToggle<cr>
   
-"let g:semanticTermColors = [ 1,2,3,6,9,10,11,12,13,14, 202,93,147,166,184, 220 ]
+let g:semanticTermColors = [ 1,2,3,6,9,10,11,12,13,14, 202,93,147,166,184, 220 ]
 
-"let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
+let s:semanticGUIColors = [ '#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80', '#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb', '#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9', '#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8' , '#f0f4c3', '#ffb74d' ]
 "Plugin 'vim-syntastic/syntastic'
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
@@ -321,8 +321,9 @@ let @y = ":'<,'>w !xsel -i"
 " the following is a mapping for copying a line in file and exec a command
 " by passing it as an argument (here command is feh), disowning the executed
 " command
-" map whatever Vy:!feh <C-r>" & disown <Cr><Cr>
+map ff Vy:!feh <C-r>" & disown <Cr><Cr>
 "nnoremap ff ^f#i\<esc>ya'u:!xlogo -bg <C-r>" & disown <Cr><Cr>
 "
 " vim fileexplorer
 " % create a file
+"
