@@ -1,6 +1,8 @@
-set nocompatible "vim won t pretend to act like vi & required
-filetype off                  " required
+"Documented vimrc with some explanations
+"remember ^n means Ctrl+n
 
+
+"-----Vundle-------------------------------------------------------------------
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin('~/.config/nvim/bundle')
@@ -22,17 +24,6 @@ Plugin 'tpope/vim-surround'
 
 " colors pairs of symbol with different colors
 Plugin 'luochen1990/rainbow'
-let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
-let g:rainbow_conf = {
-\ 'ctermfgs': ['darkblue', 'darkred', 'darkgreen', 'darkmagenta', 'darkyellow', 'green', 'lightblue'],
-\ 'parentheses': [
-\ 'start=/(/ end=/)/ fold',
-\ 'start=/\[/ end=/\]/ fold',
-\ 'start=/{/ end=/}/ fold',
-\ 'start=/#ifdef/ end=/#endif/ fold',
-\ 'start=/#ifndef/ end=/#endif/ fold',
-\ ],
-\}
 
 " colorscheme
 Plugin 'nanotech/jellybeans.vim'
@@ -41,7 +32,11 @@ Plugin 'nanotech/jellybeans.vim'
 " gcc comment a line, gc<movement> to comment 
 Plugin 'tpope/vim-commentary'
 
+" nerd tree, for directory editing
 Plugin 'preservim/nerdtree'
+
+" better c/c++ highlighting
+Plugin 'bfrg/vim-cpp-modern'
 
 " highlight every symbol with a color, horrible for the eyes but good for debugging
 Plugin 'jaxbot/semantic-highlight.vim'
@@ -99,91 +94,45 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"------jellybeans--------------------------------------------------------------
 :colorscheme jellybeans
 
-"Documented vimrc with some explanations
-"remember ^n means Ctrl+n
-
-"remember about keycode 135 (keysym 0xff67, Menu) for case change
-"on one letter ~
-set encoding=utf-8 fileencodings=
-
-set path +=** "tab completion for all file related and sub folder
-set wildmenu  "display all matching files when using tab
-"we can then just use :find myfile and vim will open it, you can also get some
-"autocomplete with this
-"to open a .c file you can just do :find *.c and press tab
-":b will try to open file by default
-"
+"------rainbow-----------------------------------------------------------------
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
+let g:rainbow_conf = {
+\ 'ctermfgs': ['darkblue', 'darkred', 'darkgreen', 'darkmagenta', 'darkyellow', 'green', 'lightblue'],
+\ 'parentheses': [
+\ 'start=/(/ end=/)/ fold',
+\ 'start=/\[/ end=/\]/ fold',
+\ 'start=/{/ end=/}/ fold',
+\ 'start=/#ifdef/ end=/#endif/ fold',
+\ 'start=/#ifndef/ end=/#endif/ fold',
+\ ],
+\}
 
 
-"define :Maketags as running ctags -R .
-"ctags allows to jump to definition of symbols inside projetc (IDE style)
-command! Maketags !cscope -R -b
-"to jump to definition of a symbol ^]
-"for ambiguous tag g ^]
-"
-"":set runtimepath+=~/.vim/bundle/cscope/cscope_maps.vim
-""function! LoadCscope()
-""  let db = findfile("cscope.out", ".;")
-""  if (!empty(db))
-""    let path = strpart(db, 0, match(db, "/cscope.out$"))
-""    set nocscopeverbose " suppress 'duplicate connection' error
-""    exe "cs add " . db . " " . path
-""    set cscopeverbose
-""  " else add the database pointed to by environment variable 
-""  elseif $CSCOPE_DB != "" 
-""    cs add $CSCOPE_DB
-""  endif
-""endfunction
-""au BufEnter /* call LoadCscope()
-
-"
-"vim keeps track of jumps you made  ^o to go back and ^i to go forward
-
-
-"autocomplete, documentation :help ins-completion
-"(in insert mode)
-"basic one ^n and ^p, they can be managed with variable completion
-"just this file ^x ^n
-"for filenames  ^x ^f
-"using ctags    ^x ^]
-
-"file browsing :help netrw-browse-maps
-"also when cursor is on a filename gf will open the file
-
-syntax enable "color highlight
-set colorcolumn=80 " color 80th column to give coding style help
-set number relativenumber " show relative line number
-set tabstop=4 "sizeof tab = 4
-set shiftwidth=4  "indent size
-set expandtab     "when pressing tab adds spaces instead of tab
-"set list  "show every special characters
-set ruler
-set wrap "one line on the screen is considered as one line for vim
-set textwidth=90        "fold text at 90
-set virtualedit=all   "cursor can move outside of real text   
-set clipboard=unnamed " default clipboard is OS clipboard
-set splitbelow  " vs split right and not left
-set splitright  " sp split down and not up
-set foldmethod=syntax " fold every function by default, good for knowing where to go
-set hidden "allows for hidden buffers
-
+"------vim-leader-mapper-------------------------------------------------------
 " Define the menu content with a Vim dictionary
 
-let bufferMenu = {'name': "Buffers",
+let vundleMenu = {'name': "Vundle",
+              \'l': [":PluginList"       , "lists configured plugins"],
+              \'i': [":PluginInstall"    , "installs plugins"],
+              \'u': [":PluginUpdate"    , "installs plugins"],
+              \'c': [":PluginClean"      , "confirms removal of unused plugins"],
+            \}
+let bufferMenu = { 'name': "Buffers",
               \'l': [":ls",  "List opened buffers (:ls)"],
               \'n': [":bnext", "switch to next buffer (:bnext)"],
-              \'p': [":bprevious", "switch to previous buffer (:bprevious)"],
-              \'d': [":bdelete", "switch to previous buffer (:bdelete)"],
+              \'N': [":bprevious", "switch to previous buffer (:bprevious)"],
+              \'c': [":bdelete", "close buffer (:bdelete)"],
               \}
 
 let tabMenu = { 'name': "Tabs",
-              \'l': [":ls",          "List opened buffers"],
-              \'n': [":tabn", "switch to next tab"],
-              \'p': [":tabp", "switch to previous tab"],
-              \'N': [":tabnew", "create new tab"],
-              \'c': [":tab close", "close tab"],
+              \'l': [":ls",          "List opened buffers (:ls)"],
+              \'n': [":tabn", "switch to next tab (:tabn)"],
+              \'N': [":tabp", "switch to previous tab (:tabp)"],
+              \'o': [":tabnew", "create new tab (:tabnew)"],
+              \'c': [":tab close", "close tab (:tab close)"],
               \}
 
 let windowMenu = { 'name': "window",
@@ -197,7 +146,7 @@ let windowMenu = { 'name': "window",
               \'L': [":wincmd L", "L move window (^w L)"],
               \'c': [":wincmd c", "close window (^w c)"],
               \'v': [":vs",       "vertical split (:vs)"],
-              \'V': [":sp",       "horizontal split (:vs)"],
+              \'V': [":sp",       "horizontal split (:sp)"],
               \'=': [":wincmd =", "resize window to same size (^w =)"],
               \'+': [":resize +10", "resize window (10 ^w +)"],
               \'-': [":resize -10", "resize window (10 ^w -)"],
@@ -209,6 +158,7 @@ let windowMenu = { 'name': "window",
               \'b': [bufferMenu, "Buffers"],
               \'t': [tabMenu,    "Tabs"],
               \'w': [windowMenu, "Windows"],
+              \'v': [vundleMenu, "Vundle"],
               \'r': [':so $MYVIMRC', 'Reload vimrc without restarting Vim'],
               \}
  
@@ -229,22 +179,57 @@ let windowMenu = { 'name': "window",
 " \'o': [':normal gf',   'Open file under cursor'],
 " \}
 
+let g:leaderMapperPos = "bottom"
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 nnoremap <silent> <leader> :LeaderMapper "<Space>"<CR>
 vnoremap <silent> <leader> :LeaderMapper "<Space>"<CR>
-"zo opens a fold at the cursor.
-"zO opens all folds at the cursor.
-"zc closes a fold under cursor. 
-"[z go to beginning of fold
-"]z got to end of fold
 
-"set makeprg=something   allows to set the action to do for compiling
-":make to build your program
-":cn :cp to go to next or previous error
-":copen open a widow containing them all
+
+
+"------vim-cpp-modern----------------------------------------------------------
+
+ " Disable function highlighting (affects both C and C++ files)
+let g:cpp_no_function_highlight = 0
+
+" Enable highlighting of C++11 attributes
+let g:cpp_attributes_highlight = 1
+
+" Highlight struct/class member variables (affects both C and C++ files)
+let g:cpp_member_highlight = 1
+
+" Put all standard C and C++ keywords under Vim's highlight group 'Statement'
+" (affects both C and C++ files)
+let g:cpp_simple_highlight = 1
+
+
+
 "
+"------cscope------------------------------------------------------------------
+"define :Maketags as running ctags -R .
+"ctags allows to jump to definition of symbols inside projetc (IDE style)
+
+command! Maketags !cscope -R -b
+"to jump to definition of a symbol ^]
+"for ambiguous tag g ^]
 "
+
+"":set runtimepath+=~/.vim/bundle/cscope/cscope_maps.vim
+""function! LoadCscope()
+""  let db = findfile("cscope.out", ".;")
+""  if (!empty(db))
+""    let path = strpart(db, 0, match(db, "/cscope.out$"))
+""    set nocscopeverbose " suppress 'duplicate connection' error
+""    exe "cs add " . db . " " . path
+""    set cscopeverbose
+""  " else add the database pointed to by environment variable 
+""  elseif $CSCOPE_DB != "" 
+""    cs add $CSCOPE_DB
+""  endif
+""endfunction
+
+
+""au BufEnter /* call LoadCscope()
 "cscope set up
 "Code and explanations https://vim.fandom.com/wiki/Cscope
 " if has('cscope') 
@@ -264,7 +249,73 @@ vnoremap <silent> <leader> :LeaderMapper "<Space>"<CR>
 "   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 " endif
 
-"-----imap------------------------------------------------------------------------
+"-----configuration of standard settings---------------------------------------
+
+"
+"vim keeps track of jumps you made  ^o to go back and ^i to go forward
+
+
+"autocomplete, documentation :help ins-completion
+"(in insert mode)
+"basic one ^n and ^p, they can be managed with variable completion
+"just this file ^x ^n
+"for filenames  ^x ^f
+"using ctags    ^x ^]
+
+set nocompatible "vim won t pretend to act like vi & required
+filetype off     " required
+
+"file browsing :help netrw-browse-maps
+"also when cursor is on a filename gf will open the file
+
+
+"remember about keycode 135 (keysym 0xff67, Menu) for case change
+"on one letter ~
+set encoding=utf-8 fileencodings=
+
+set path +=** "tab completion for all file related and sub folder
+set wildmenu  "display all matching files when using tab
+"we can then just use :find myfile and vim will open it, you can also get some
+"autocomplete with this
+"to open a .c file you can just do :find *.c and press tab
+":b will try to open file by default
+"
+
+
+syntax enable "color highlight
+set colorcolumn=80 " color 80th column to give coding style help
+set number relativenumber " show relative line number
+set tabstop=4 "sizeof tab = 4
+set shiftwidth=4  "indent size
+set expandtab     "when pressing tab adds spaces instead of tab
+"set list  "show every special characters
+set ruler
+set wrap "one line on the screen is considered as one line for vim
+set textwidth=90        "fold text at 90
+set virtualedit=all   "cursor can move outside of real text   
+set clipboard=unnamed " default clipboard is OS clipboard
+set splitbelow  " vs split right and not left
+set splitright  " sp split down and not up
+set hidden "allows for hidden buffers
+set foldmethod=syntax " fold every function by default
+    "zo opens a fold at the cursor.
+    "zO opens all folds at the cursor.
+    "zc closes a fold under cursor. 
+    "[z go to beginning of fold
+    "]z got to end of fold
+
+"set makeprg=something   allows to set the action to do for compiling
+":make to build your program
+":cn :cp to go to next or previous error
+":copen open a widow containing them all
+"
+
+packadd termdebug
+hi debugPC ctermbg=red guibg=red
+hi debugBreakpoint ctermbg=blue guibg=blue
+hi Normal ctermbg=NONE guibg=NONE
+hi NonText ctermbg=NONE guibg=NONE  guifg=NONE ctermfg=NONE
+"-----imap---------------------------------------------------------------------
 inoremap {  {}<Left><Return><Esc>O
 inoremap {{ {
 inoremap {} {}
@@ -293,7 +344,7 @@ inoremap [[ [
 inoremap #pr #pragma<Space>once<Return><Return>
 inoremap #inc #include<Space>
 
-"---nmap-----------------------------------------------------------------------
+"-----nmap---------------------------------------------------------------------
 nnoremap <Backspace> <Del>
 
 "snippet exeample
@@ -304,37 +355,15 @@ nnoremap <Backspace> <Del>
 "this allow to prewrite some code like the usual for loop
 "nnoremap FOR :read $HOME/.vim/snippets/forloop.skeleton<CR>2jV2k:s/k/
 
-"---map------------------------------------------------------------------------
+"-----map----------------------------------------------------------------------
 noremap <F11> :setlocal spell! spelllang=en_us<CR>
 noremap <F12> :setlocal spell! spelllang=fr_FR<CR>
 noremap <F9> :% !clang-format %
 
-"---cabrev----------------------------------------------------------------------
+"-----cabrev-------------------------------------------------------------------
 cnoreabbrev H vert h
 
-
-packadd termdebug
-hi debugPC ctermbg=red guibg=red
-hi debugBreakpoint ctermbg=blue guibg=blue
-hi Normal ctermbg=NONE guibg=NONE
-hi NonText ctermbg=NONE guibg=NONE  guifg=NONE ctermfg=NONE
-
-"clighter8
-"colors to use"
-"darkblue 12
-"blue 105
-"light blue 111
-"turquoise 117
-"lightpurple 183
-"magenta 170
-"orange 214
-"darkorange 166
-"red 9
-"green 37
-"dark green 64
-"gold 178
-"
- 
+"-----macros-------------------------------------------------------------------
 " for HTML
 let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 
@@ -343,7 +372,3 @@ let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 " command
 "map ff Vy:!feh <C-r>" & disown <Cr><Cr>
 "nnoremap ff ^f#i\<esc>ya'u:!xlogo -bg <C-r>" & disown <Cr><Cr>
-"
-" vim fileexplorer
-" % create a file
-"
