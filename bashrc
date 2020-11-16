@@ -40,4 +40,3 @@ export JAVA_HOME="/home/chat/andro/archives/jdk1.6.0_41"
 export DERBY_HOME="/home/chat/andro/archives/jdk1.6.0_41/db"
 export J2SDKDIR="/home/chat/andro/archives/jdk1.6.0_41"
 export PATH="$PATH:/home/chat/andro/archives/jdk1.6.0_41/bin:/home/chat/andro/archives/jdk1.6.0_41/db/bin"
-set -o vi
