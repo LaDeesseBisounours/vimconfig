@@ -115,10 +115,10 @@ let g:rainbow_conf = {
 " Define the menu content with a Vim dictionary
 
 let vundleMenu = {'name': "Vundle",
-              \'l': [":PluginList"       , "lists configured plugins"],
-              \'i': [":PluginInstall"    , "installs plugins"],
-              \'u': [":PluginUpdate"    , "installs plugins"],
               \'c': [":PluginClean"      , "confirms removal of unused plugins"],
+              \'i': [":PluginInstall"    , "installs plugins"],
+              \'l': [":PluginList"       , "lists configured plugins"],
+              \'u': [":PluginUpdate"    , "installs plugins"],
             \}
 let bufferMenu = { 'name': "Buffers",
               \'l': [":ls",  "List opened buffers (:ls)"],
@@ -128,11 +128,11 @@ let bufferMenu = { 'name': "Buffers",
               \}
 
 let tabMenu = { 'name': "Tabs",
+              \'N': [":tabp", "switch to previous tab (:tabp)"],
+              \'c': [":tab close", "close tab (:tab close)"],
               \'l': [":ls",          "List opened buffers (:ls)"],
               \'n': [":tabn", "switch to next tab (:tabn)"],
-              \'N': [":tabp", "switch to previous tab (:tabp)"],
               \'o': [":tabnew", "create new tab (:tabnew)"],
-              \'c': [":tab close", "close tab (:tab close)"],
               \}
 
 let windowMenu = { 'name': "window",
@@ -154,12 +154,20 @@ let windowMenu = { 'name': "window",
               \'<': [":10 wincmd <", "resize window (10 ^w <)"],
               \}
 
+let openMenu = { 'name': "Open",
+              \'T': [":sp | term",  "open terminal in split (:sp | term)"],
+              \'g': [":Termdebug",  "open gdb (:Termdebug)"],
+              \'n': [":vs . | wincmd H | vertical resize 30",  "open NertTree (:vs . | wincmd H | vertical resize 30)"],
+              \'t': [":vs | term",  "open terminal in vsplit (:vs | term)"],
+              \}
+
  let g:leaderMenu = {'name':  "Menu",
               \'b': [bufferMenu, "Buffers"],
-              \'t': [tabMenu,    "Tabs"],
-              \'w': [windowMenu, "Windows"],
-              \'v': [vundleMenu, "Vundle"],
+              \'o': [openMenu,   "Open"],
               \'r': [':so $MYVIMRC', 'Reload vimrc without restarting Vim'],
+              \'t': [tabMenu,    "Tabs"],
+              \'v': [vundleMenu, "Vundle"],
+              \'w': [windowMenu, "Windows"],
               \}
  
 
@@ -315,6 +323,8 @@ hi debugPC ctermbg=red guibg=red
 hi debugBreakpoint ctermbg=blue guibg=blue
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE  guifg=NONE ctermfg=NONE
+
+
 "-----imap---------------------------------------------------------------------
 inoremap {  {}<Left><Return><Esc>O
 inoremap {{ {
@@ -345,7 +355,6 @@ inoremap #pr #pragma<Space>once<Return><Return>
 inoremap #inc #include<Space>
 
 "-----nmap---------------------------------------------------------------------
-nnoremap <Backspace> <Del>
 
 "snippet exeample
 "file $HOME/.vim/snippets/forloop.skeleton contains something like
@@ -361,7 +370,7 @@ noremap <F12> :setlocal spell! spelllang=fr_FR<CR>
 noremap <F9> :% !clang-format %
 
 "-----cabrev-------------------------------------------------------------------
-cnoreabbrev H vert h
+cnoreabbrev He vert h
 
 "-----macros-------------------------------------------------------------------
 " for HTML
@@ -373,5 +382,3 @@ let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 "map ff Vy:!feh <C-r>" & disown <Cr><Cr>
 "nnoremap ff ^f#i\<esc>ya'u:!xlogo -bg <C-r>" & disown <Cr><Cr>
 
-"-----highlights---------------------------------------------------------------
-"
