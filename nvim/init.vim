@@ -50,18 +50,6 @@ Plugin 'plasticboy/vim-markdown'
 " Spacemacs like menu
 Plugin 'dpretet/vim-leader-mapper'
 
-:nnoremap <F8> :SemanticHighlightToggle<cr>
-  
-let g:semanticTermColors = [1, 2, 3, 6, 9, 10, 11, 12, 13, 14, 202, 93, 147, 166, 184, 220]
-
-let s:semanticGUIColors = [
-            \'#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80',
-            \'#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb',
-            \'#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9',
-            \'#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8',
-            \'#f0f4c3', '#ffb74d'
-            \]
-
 
 
 " let Vundle manage Vundle, required
@@ -116,6 +104,19 @@ let g:rainbow_conf = {
 \ ],
 \}
 
+
+"------Semantic-Highlight------------------------------------------------------
+:nnoremap <F8> :SemanticHighlightToggle<cr>
+  
+let g:semanticTermColors = [1, 2, 3, 6, 9, 10, 11, 12, 13, 14, 202, 93, 147, 166, 184, 220]
+
+let s:semanticGUIColors = [
+            \'#72d572', '#c5e1a5', '#e6ee9c', '#fff59d', '#ffe082', '#ffcc80',
+            \'#ffab91', '#bcaaa4', '#b0bec5', '#ffa726', '#ff8a65', '#f9bdbb',
+            \'#f9bdbb', '#f8bbd0', '#e1bee7', '#d1c4e9', '#ffe0b2', '#c5cae9',
+            \'#d0d9ff', '#b3e5fc', '#b2ebf2', '#b2dfdb', '#a3e9a4', '#dcedc8',
+            \'#f0f4c3', '#ffb74d'
+            \]
 
 "------vim-leader-mapper-------------------------------------------------------
 " Define the menu content with a Vim dictionary
@@ -177,30 +178,11 @@ let g:leaderMenu = {'name':  "Menu" ,
               \'w': [windowMenu     , "Windows"]                             ,
               \}
 
-
-" \'f': [":Files",       "FZF file search"],
-" \'s': [":BLines",      "FZF text search into current buffer"],
-" \'S': [":Lines",       "FZF text search across loaded buffers"],
-" \'g': [":BCommits",    "FZF git commits of the current buffer"],
-" \'G': [":Commits",     "FZF git commits of the repository"],
-" \'v': [':vsplit',      'Split buffer vertically'],
-" \'h': [':split',       'Split buffer horizontally'],
-              " \'t': [':Tags',        'FZF tag search'],
-""
-" \'t': [':Tags',        'FZF tag search'],
-" \'d': [':bd',          'Close buffer'],
-" \'r': [':so $MYVIMRC', 'Reload vimrc without restarting Vim'],
-" \'l': [':ls',          'List opened buffers'],
-" \'o': [':normal gf',   'Open file under cursor'],
-" \}
-
 let g:leaderMapperPos = "bottom"
 nnoremap <Space> <Nop>
 let mapleader = "\<Space>"
 nnoremap <silent> <leader> :LeaderMapper "<Space>"<CR>
 vnoremap <silent> <leader> :LeaderMapper "<Space>"<CR>
-
-
 
 "------vim-cpp-modern----------------------------------------------------------
 
@@ -217,9 +199,6 @@ let g:cpp_member_highlight = 1
 " (affects both C and C++ files)
 let g:cpp_simple_highlight = 1
 
-
-
-"
 "------cscope------------------------------------------------------------------
 "define :Maketags as running ctags -R .
 "ctags allows to jump to definition of symbols inside projetc (IDE style)
