@@ -41,6 +41,12 @@ Plugin 'bfrg/vim-cpp-modern'
 " highlight every symbol with a color, horrible for the eyes but good for debugging
 Plugin 'jaxbot/semantic-highlight.vim'
 
+" tabular allows to do fancy alignment (required by markdown)
+Plugin 'godlygeek/tabular'
+
+" markdown plugin (requires tabular)
+Plugin 'plasticboy/vim-markdown'
+
 " Spacemacs like menu
 Plugin 'dpretet/vim-leader-mapper'
 
@@ -114,62 +120,63 @@ let g:rainbow_conf = {
 "------vim-leader-mapper-------------------------------------------------------
 " Define the menu content with a Vim dictionary
 
-let vundleMenu = {'name': "Vundle",
-              \'c': [":PluginClean"      , "confirms removal of unused plugins"],
-              \'i': [":PluginInstall"    , "installs plugins"],
-              \'l': [":PluginList"       , "lists configured plugins"],
-              \'u': [":PluginUpdate"    , "installs plugins"],
+let vundleMenu = {'name': "Vundle"    ,
+              \'c': [":PluginClean"   , "confirms removal of unused plugins"] ,
+              \'i': [":PluginInstall" , "installs plugins"]                   ,
+              \'l': [":PluginList"    , "lists configured plugins"]           ,
+              \'u': [":PluginUpdate"  , "installs plugins"]                   ,
             \}
-let bufferMenu = { 'name': "Buffers",
-              \'l': [":ls",  "List opened buffers (:ls)"],
-              \'n': [":bnext", "switch to next buffer (:bnext)"],
-              \'N': [":bprevious", "switch to previous buffer (:bprevious)"],
-              \'c': [":bdelete", "close buffer (:bdelete)"],
+
+let bufferMenu = { 'name': "Buffers" ,
+              \'N': [":bprevious"    , "switch to previous buffer (:bprevious)"] ,
+              \'c': [":bdelete"      , "close buffer (:bdelete)"]                ,
+              \'l': [":ls"           , "List opened buffers (:ls)"]              ,
+              \'n': [":bnext"        , "switch to next buffer (:bnext)"]         ,
               \}
 
-let tabMenu = { 'name': "Tabs",
-              \'N': [":tabp", "switch to previous tab (:tabp)"],
-              \'c': [":tab close", "close tab (:tab close)"],
-              \'l': [":ls",          "List opened buffers (:ls)"],
-              \'n': [":tabn", "switch to next tab (:tabn)"],
-              \'o': [":tabnew", "create new tab (:tabnew)"],
+let tabMenu = { 'name': "Tabs"    ,
+              \'N': [":tabp"      , "switch to previous tab (:tabp)"] ,
+              \'c': [":tab close" , "close tab (:tab close)"]         ,
+              \'l': [":ls"        , "List opened buffers (:ls)"]      ,
+              \'n': [":tabn"      , "switch to next tab (:tabn)"]     ,
+              \'o': [":tabnew"    , "create new tab (:tabnew)"]       ,
               \}
 
-let windowMenu = { 'name': "window",
-              \'h': [":wincmd h", "h window movement (^w h)"],
-              \'j': [":wincmd j", "j window movement (^w j)"],
-              \'k': [":wincmd k", "k window movement (^w k)"],
-              \'l': [":wincmd l", "l window movement (^w l)"],
-              \'H': [":wincmd H", "H move window (^w H)"],
-              \'J': [":wincmd J", "J move window (^w J)"],
-              \'K': [":wincmd K", "K move window (^w K)"],
-              \'L': [":wincmd L", "L move window (^w L)"],
-              \'c': [":wincmd c", "close window (^w c)"],
-              \'v': [":vs",       "vertical split (:vs)"],
-              \'V': [":sp",       "horizontal split (:sp)"],
-              \'=': [":wincmd =", "resize window to same size (^w =)"],
-              \'+': [":resize +10", "resize window (10 ^w +)"],
-              \'-': [":resize -10", "resize window (10 ^w -)"],
-              \'>': [":10 wincmd >", "resize window (10 ^w >)"],
-              \'<': [":10 wincmd <", "resize window (10 ^w <)"],
+let windowMenu = { 'name': "window" ,
+              \'+': [":resize +10"  , "resize window (10 ^w +)"]           ,
+              \'-': [":resize -10"  , "resize window (10 ^w -)"]           ,
+              \'<': [":10 wincmd <" , "resize window (10 ^w <)"]           ,
+              \'=': [":wincmd ="    , "resize window to same size (^w =)"] ,
+              \'>': [":10 wincmd >" , "resize window (10 ^w >)"]           ,
+              \'H': [":wincmd H"    , "H move window (^w H)"]              ,
+              \'J': [":wincmd J"    , "J move window (^w J)"]              ,
+              \'K': [":wincmd K"    , "K move window (^w K)"]              ,
+              \'L': [":wincmd L"    , "L move window (^w L)"]              ,
+              \'V': [":sp"          , "horizontal split (:sp)"]            ,
+              \'c': [":wincmd c"    , "close window (^w c)"]               ,
+              \'h': [":wincmd h"    , "h window movement (^w h)"]          ,
+              \'j': [":wincmd j"    , "j window movement (^w j)"]          ,
+              \'k': [":wincmd k"    , "k window movement (^w k)"]          ,
+              \'l': [":wincmd l"    , "l window movement (^w l)"]          ,
+              \'v': [":vs"          , "vertical split (:vs)"]              ,
               \}
 
-let openMenu = { 'name': "Open",
-              \'T': [":sp | term",  "open terminal in split (:sp | term)"],
-              \'g': [":Termdebug",  "open gdb (:Termdebug)"],
-              \'n': [":vs . | wincmd H | vertical resize 30",  "open NertTree (:vs . | wincmd H | vertical resize 30)"],
-              \'t': [":vs | term",  "open terminal in vsplit (:vs | term)"],
+let openMenu = { 'name': "Open"                              ,
+              \'T': [":sp | term"                            , "open terminal in split (:sp | term)"]                   ,
+              \'g': [":Termdebug"                            , "open gdb (:Termdebug)"]                                 ,
+              \'n': [":vs . | wincmd H | vertical resize 30" , "open NertTree (:vs . | wincmd H | vertical resize 30)"] ,
+              \'t': [":vs | term"                            , "open terminal in vsplit (:vs | term)"]                  ,
               \}
 
- let g:leaderMenu = {'name':  "Menu",
-              \'b': [bufferMenu, "Buffers"],
-              \'o': [openMenu,   "Open"],
-              \'r': [':so $MYVIMRC', 'Reload vimrc without restarting Vim'],
-              \'t': [tabMenu,    "Tabs"],
-              \'v': [vundleMenu, "Vundle"],
-              \'w': [windowMenu, "Windows"],
+let g:leaderMenu = {'name':  "Menu" ,
+              \'b': [bufferMenu     , "Buffers"]                             ,
+              \'o': [openMenu       , "Open"]                                ,
+              \'r': [':so $MYVIMRC' , 'Reload vimrc without restarting Vim'] ,
+              \'t': [tabMenu        , "Tabs"]                                ,
+              \'v': [vundleMenu     , "Vundle"]                              ,
+              \'w': [windowMenu     , "Windows"]                             ,
               \}
- 
+
 
 " \'f': [":Files",       "FZF file search"],
 " \'s': [":BLines",      "FZF text search into current buffer"],
