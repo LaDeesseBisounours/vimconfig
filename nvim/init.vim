@@ -372,3 +372,6 @@ let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 " command
 "map ff Vy:!feh <C-r>" & disown <Cr><Cr>
 "nnoremap ff ^f#i\<esc>ya'u:!xlogo -bg <C-r>" & disown <Cr><Cr>
+
+"-----highlights---------------------------------------------------------------
+"
