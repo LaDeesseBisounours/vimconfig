@@ -13,13 +13,13 @@ call vundle#begin('~/.config/nvim/bundle')
 Plugin 'hdima/python-syntax'
 let python_highlight_all=1
 
-" syntax highlighting for cmakecache
+" syntax highlighting for cmakecache 
 Plugin 'Neui/cmakecache-syntax.vim'
 
 " syntax highlighting for pgsql
 Plugin 'lifepillar/pgsql.vim'
 
-" vim surround (s key) allows for operations 
+" vim surround operation (s key) for commands like cs"' : "lele" -> 'lele'
 Plugin 'tpope/vim-surround'
 
 " colors pairs of symbol with different colors
@@ -27,7 +27,6 @@ Plugin 'luochen1990/rainbow'
 
 " colorscheme
 Plugin 'nanotech/jellybeans.vim'
-
 
 " gcc comment a line, gc<movement> to comment 
 Plugin 'tpope/vim-commentary'
@@ -49,8 +48,6 @@ Plugin 'plasticboy/vim-markdown'
 
 " Spacemacs like menu
 Plugin 'dpretet/vim-leader-mapper'
-
-
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
@@ -120,62 +117,89 @@ let s:semanticGUIColors = [
 
 "------vim-leader-mapper-------------------------------------------------------
 " Define the menu content with a Vim dictionary
+function! ChooseTab()
+    execute "tabs"
+    echo "Enter number Tab "
+    let c = nr2char(getchar())
+    let d = ""
+    while c =~ "[0-9]"
+        echon c
+        let d = d . c
+        let c = nr2char(getchar())
+    endwhile
+    execute "tabn " . d
+endfunction
 
-let vundleMenu = {'name': "Vundle"    ,
-              \'c': [":PluginClean"   , "confirms removal of unused plugins"] ,
-              \'i': [":PluginInstall" , "installs plugins"]                   ,
-              \'l': [":PluginList"    , "lists configured plugins"]           ,
-              \'u': [":PluginUpdate"  , "installs plugins"]                   ,
+function! ChooseBuffer()
+    execute "ls"
+    echo "Enter number buffer "
+    let c = nr2char(getchar())
+    let d = ""
+    while c =~ "[0-9]"
+        echon c
+        let d = d . c
+        let c = nr2char(getchar())
+    endwhile
+    execute "b " . d
+endfunction
+
+let vundleMenu = {'name': "Vundle"   ,
+              \'c': [":PluginClean"  , "confirms removal of unused plugins (:PluginClean)"],
+              \'i': [":PluginInstall", "installs plugins (:PluginInstall)"]                ,
+              \'l': [":PluginList"   , "lists configured plugins (:PluginList)"]           ,
+              \'u': [":PluginUpdate" , "installs plugins (:PluginUpdate)"]                 ,
             \}
 
 let bufferMenu = { 'name': "Buffers" ,
-              \'N': [":bprevious"    , "switch to previous buffer (:bprevious)"] ,
-              \'c': [":bdelete"      , "close buffer (:bdelete)"]                ,
-              \'l': [":ls"           , "List opened buffers (:ls)"]              ,
-              \'n': [":bnext"        , "switch to next buffer (:bnext)"]         ,
+              \'N': [":bprevious"          , "switch to previous buffer (:bprevious)"],
+              \'c': [":bdelete"            , "close buffer (:bdelete)"]               ,
+              \'k': [":call ChooseBuffer()", "choose buffer (:call ChooseBuffer())"]  ,
+              \'l': [":ls"                 , "List opened buffers (:ls)"]             ,
+              \'n': [":bnext"              , "switch to next buffer (:bnext)"]        ,
               \}
 
 let tabMenu = { 'name': "Tabs"    ,
-              \'N': [":tabp"      , "switch to previous tab (:tabp)"] ,
-              \'c': [":tab close" , "close tab (:tab close)"]         ,
-              \'l': [":ls"        , "List opened buffers (:ls)"]      ,
-              \'n': [":tabn"      , "switch to next tab (:tabn)"]     ,
-              \'o': [":tabnew"    , "create new tab (:tabnew)"]       ,
+              \'N': [":tabp"            , "switch to previous tab (:tabp)"],
+              \'c': [":tab close"       , "close tab (:tab close)"]        ,
+              \'k': [":call ChooseTab()", "choose tab (:call ChooseTab())"],
+              \'l': [":tabs"            , "List opened buffers (:ls)"]     ,
+              \'n': [":tabn"            , "switch to next tab (:tabn)"]    ,
+              \'o': [":tabnew"          , "create new tab (:tabnew)"]      ,
               \}
 
 let windowMenu = { 'name': "window" ,
-              \'+': [":resize +10"  , "resize window (10 ^w +)"]           ,
-              \'-': [":resize -10"  , "resize window (10 ^w -)"]           ,
-              \'<': [":10 wincmd <" , "resize window (10 ^w <)"]           ,
-              \'=': [":wincmd ="    , "resize window to same size (^w =)"] ,
-              \'>': [":10 wincmd >" , "resize window (10 ^w >)"]           ,
-              \'H': [":wincmd H"    , "H move window (^w H)"]              ,
-              \'J': [":wincmd J"    , "J move window (^w J)"]              ,
-              \'K': [":wincmd K"    , "K move window (^w K)"]              ,
-              \'L': [":wincmd L"    , "L move window (^w L)"]              ,
-              \'V': [":sp"          , "horizontal split (:sp)"]            ,
-              \'c': [":wincmd c"    , "close window (^w c)"]               ,
-              \'h': [":wincmd h"    , "h window movement (^w h)"]          ,
-              \'j': [":wincmd j"    , "j window movement (^w j)"]          ,
-              \'k': [":wincmd k"    , "k window movement (^w k)"]          ,
-              \'l': [":wincmd l"    , "l window movement (^w l)"]          ,
-              \'v': [":vs"          , "vertical split (:vs)"]              ,
+              \'+': [":resize +10" , "resize window (10 ^w +)"]          ,
+              \'-': [":resize -10" , "resize window (10 ^w -)"]          ,
+              \'<': [":10 wincmd <", "resize window (10 ^w <)"]          ,
+              \'=': [":wincmd ="   , "resize window to same size (^w =)"],
+              \'>': [":10 wincmd >", "resize window (10 ^w >)"]          ,
+              \'H': [":wincmd H"   , "H move window (^w H)"]             ,
+              \'J': [":wincmd J"   , "J move window (^w J)"]             ,
+              \'K': [":wincmd K"   , "K move window (^w K)"]             ,
+              \'L': [":wincmd L"   , "L move window (^w L)"]             ,
+              \'V': [":sp"         , "horizontal split (:sp)"]           ,
+              \'c': [":wincmd c"   , "close window (^w c)"]              ,
+              \'h': [":wincmd h"   , "h window movement (^w h)"]         ,
+              \'j': [":wincmd j"   , "j window movement (^w j)"]         ,
+              \'k': [":wincmd k"   , "k window movement (^w k)"]         ,
+              \'l': [":wincmd l"   , "l window movement (^w l)"]         ,
+              \'v': [":vs"         , "vertical split (:vs)"]             ,
               \}
 
-let openMenu = { 'name': "Open"                              ,
-              \'T': [":sp | term"                            , "open terminal in split (:sp | term)"]                   ,
-              \'g': [":Termdebug"                            , "open gdb (:Termdebug)"]                                 ,
-              \'n': [":vs . | wincmd H | vertical resize 30" , "open NertTree (:vs . | wincmd H | vertical resize 30)"] ,
-              \'t': [":vs | term"                            , "open terminal in vsplit (:vs | term)"]                  ,
+let openMenu = { 'name': "Open",
+              \'T': [":sp | term"                    , "open terminal in split (:sp | term)"]          ,
+              \'g': [":Termdebug"                    , "open gdb (:Termdebug)"]                        ,
+              \'n': [":vs . | wincmd H | vert res 30", "open NertTree (:vs . | wincmd H | ver res 30)"],
+              \'t': [":vs | term"                    , "open terminal in vsplit (:vs | term)"]         ,
               \}
 
-let g:leaderMenu = {'name':  "Menu" ,
-              \'b': [bufferMenu     , "Buffers"]                             ,
-              \'o': [openMenu       , "Open"]                                ,
-              \'r': [':so $MYVIMRC' , 'Reload vimrc without restarting Vim'] ,
-              \'t': [tabMenu        , "Tabs"]                                ,
-              \'v': [vundleMenu     , "Vundle"]                              ,
-              \'w': [windowMenu     , "Windows"]                             ,
+let g:leaderMenu = {'name':  "Menu",
+              \'b': [bufferMenu    , "Buffers"]                            ,
+              \'o': [openMenu      , "Open"]                               ,
+              \'r': [':so $MYVIMRC', 'Reload vimrc without restarting Vim'],
+              \'t': [tabMenu       , "Tabs"]                               ,
+              \'v': [vundleMenu    , "Vundle"]                             ,
+              \'w': [windowMenu    , "Windows"]                            ,
               \}
 
 let g:leaderMapperPos = "bottom"
@@ -200,6 +224,7 @@ let g:cpp_member_highlight = 1
 let g:cpp_simple_highlight = 1
 
 "------cscope------------------------------------------------------------------
+
 "define :Maketags as running ctags -R .
 "ctags allows to jump to definition of symbols inside projetc (IDE style)
 
@@ -245,9 +270,7 @@ command! Maketags !cscope -R -b
 
 "-----configuration of standard settings---------------------------------------
 
-"
 "vim keeps track of jumps you made  ^o to go back and ^i to go forward
-
 
 "autocomplete, documentation :help ins-completion
 "(in insert mode)
@@ -291,13 +314,6 @@ set clipboard=unnamed " default clipboard is OS clipboard
 set splitbelow  " vs split right and not left
 set splitright  " sp split down and not up
 set hidden "allows for hidden buffers
-set foldmethod=syntax " fold every function by default
-    "zo opens a fold at the cursor.
-    "zO opens all folds at the cursor.
-    "zc closes a fold under cursor. 
-    "[z go to beginning of fold
-    "]z got to end of fold
-
 "set makeprg=something   allows to set the action to do for compiling
 ":make to build your program
 ":cn :cp to go to next or previous error
@@ -310,8 +326,18 @@ hi debugBreakpoint ctermbg=blue guibg=blue
 hi Normal ctermbg=NONE guibg=NONE
 hi NonText ctermbg=NONE guibg=NONE  guifg=NONE ctermfg=NONE
 
+"-----folding------------------------------------------------------------------
+set foldmethod=syntax " fold every function by default
+    "zo opens a fold at the cursor.
+    "zO opens all folds at the cursor.
+    "zc closes a fold under cursor. 
+    "[z go to beginning of fold
+    "]z got to end of fold
+
+
 
 "-----imap---------------------------------------------------------------------
+
 inoremap {  {}<Left><Return><Esc>O
 inoremap {{ {
 inoremap {} {}
@@ -340,6 +366,29 @@ inoremap [[ [
 inoremap #pr #pragma<Space>once<Return><Return>
 inoremap #inc #include<Space>
 
+"-----tmap---------------------------------------------------------------------
+
+tnoremap <C-w>h <C-\><C-N><C-w>h
+tnoremap <C-w>j <C-\><C-N><C-w>j
+tnoremap <C-w>k <C-\><C-N><C-w>k
+tnoremap <C-w>l <C-\><C-N><C-w>l
+tnoremap <Esc> <C-\><C-n>
+
+"-----safety map to always move------------------------------------------------
+
+tnoremap <A-h> <C-\><C-N><C-w>h
+tnoremap <A-j> <C-\><C-N><C-w>j
+tnoremap <A-k> <C-\><C-N><C-w>k
+tnoremap <A-l> <C-\><C-N><C-w>l
+inoremap <A-h> <C-\><C-N><C-w>h
+inoremap <A-j> <C-\><C-N><C-w>j
+inoremap <A-k> <C-\><C-N><C-w>k
+inoremap <A-l> <C-\><C-N><C-w>l
+nnoremap <A-h> <C-w>h
+nnoremap <A-j> <C-w>j
+nnoremap <A-k> <C-w>k
+nnoremap <A-l> <C-w>l
+
 "-----nmap---------------------------------------------------------------------
 
 "snippet exeample
@@ -351,14 +400,17 @@ inoremap #inc #include<Space>
 "nnoremap FOR :read $HOME/.vim/snippets/forloop.skeleton<CR>2jV2k:s/k/
 
 "-----map----------------------------------------------------------------------
+
 noremap <F11> :setlocal spell! spelllang=en_us<CR>
 noremap <F12> :setlocal spell! spelllang=fr_FR<CR>
 noremap <F9> :% !clang-format %
 
 "-----cabrev-------------------------------------------------------------------
+
 cnoreabbrev He vert h
 
 "-----macros-------------------------------------------------------------------
+
 " for HTML
 let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 
@@ -367,4 +419,3 @@ let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
 " command
 "map ff Vy:!feh <C-r>" & disown <Cr><Cr>
 "nnoremap ff ^f#i\<esc>ya'u:!xlogo -bg <C-r>" & disown <Cr><Cr>
-
