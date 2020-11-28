@@ -58,8 +58,8 @@ smart_borders on
 gaps inner 10
 gaps outer 2
 #sound
-bindsym $mod+F7 exec ~/vimconfig/pamixeradd.sh + 5
-bindsym $mod+F6 exec ~/vimconfig/pamixeradd.sh - 5 
+bindsym $mod+F7 exec /usr/bin/pamixer_change_volume + 5
+bindsym $mod+F6 exec /usr/bin/pamixer_change_volume - 5 
 bindsym $mod+F5 exec pamixer --set-volume 0
 bindsym $mod+F1 exec /usr/bin/brightness_manager -500
 bindsym $mod+F2 exec /usr/bin/brightness_manager 500
