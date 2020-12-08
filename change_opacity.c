@@ -22,7 +22,7 @@ int main(int argc, char *argv[]) {
 
     char path[50];
     const char* homedir = getenv("HOME");
-    const char* relative = "/.alacritty.yml";
+    const char* relative = "/.config/alacritty/alacritty.yml";
     strcpy(path, homedir);
     strcpy(path + strlen(homedir), relative);
 

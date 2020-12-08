@@ -308,7 +308,7 @@ set expandtab     "when pressing tab adds spaces instead of tab
 "set list  "show every special characters
 set ruler
 set wrap "one line on the screen is considered as one line for vim
-set textwidth=90        "fold text at 90
+"set textwidth=90        "fold text at 90
 set virtualedit=all   "cursor can move outside of real text   
 set clipboard=unnamed " default clipboard is OS clipboard
 set splitbelow  " vs split right and not left
@@ -412,7 +412,7 @@ cnoreabbrev He vert h
 "-----macros-------------------------------------------------------------------
 
 " for HTML
-let @h = "$v^xi<\<Esc>pA\<Space></\<Esc>pF<"
+let @h = "\"tdiwi<\"tpla</\"tpF<i"
 
 " the following is a mapping for copying a line in file and exec a command
 " by it as an argument (here command is feh), disowning the executed

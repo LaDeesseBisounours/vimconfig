@@ -1,4 +1,4 @@
-CFLAFS=-O2 -Wall -Wextra -Werror
+CFLAFS= -Wall -Wextra -Werror -g
 all: change_opacity
 
 install: change_opacity 
