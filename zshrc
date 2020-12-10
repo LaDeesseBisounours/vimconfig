@@ -76,6 +76,7 @@ source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
+
 setxkbmap -layout us_qwerty-fr -option caps:escape
 xrdb -merge ~/.Xresources
 
@@ -136,5 +137,5 @@ else
       echo "${${VI_KEYMAP/vicmd/$MODE_INDICATOR}/(main|viins)/}"
     }
     bindkey -v
-    neofetch
+    #neofetch
 fi

@@ -150,40 +150,42 @@ let vundleMenu = {'name': "Vundle"   ,
               \'u': [":PluginUpdate" , "installs plugins (:PluginUpdate)"]                 ,
             \}
 
-let bufferMenu = { 'name': "Buffers" ,
-              \'N': [":bprevious"          , "switch to previous buffer (:bprevious)"],
-              \'c': [":bdelete"            , "close buffer (:bdelete)"]               ,
-              \'k': [":call ChooseBuffer()", "choose buffer (:call ChooseBuffer())"]  ,
-              \'l': [":ls"                 , "List opened buffers (:ls)"]             ,
-              \'n': [":bnext"              , "switch to next buffer (:bnext)"]        ,
+let bufferMenu = { 'name': "Buffers"        ,
+              \'N': [":bprevious"           , "switch to previous buffer (:bprevious)"] ,
+              \'c': [":bdelete"             , "close buffer (:bdelete)"]                ,
+              \'k': [":call ChooseBuffer()" , "choose buffer (:call ChooseBuffer())"]   ,
+              \'l': [":ls"                  , "List opened buffers (:ls)"]              ,
+              \'n': [":bnext"               , "switch to next buffer (:bnext)"]         ,
               \}
 
-let tabMenu = { 'name': "Tabs"    ,
-              \'N': [":tabp"            , "switch to previous tab (:tabp)"],
-              \'c': [":tab close"       , "close tab (:tab close)"]        ,
-              \'k': [":call ChooseTab()", "choose tab (:call ChooseTab())"],
-              \'l': [":tabs"            , "List opened buffers (:ls)"]     ,
-              \'n': [":tabn"            , "switch to next tab (:tabn)"]    ,
-              \'o': [":tabnew"          , "create new tab (:tabnew)"]      ,
+let tabMenu = { 'name': "Tabs"           ,
+              \'N': [":tabp"             , "switch to previous tab (:tabp)"] ,
+              \'c': [":tab close"        , "close tab (:tab close)"]         ,
+              \'k': [":call ChooseTab()" , "choose tab (:call ChooseTab())"] ,
+              \'l': [":tabs"             , "List opened buffers (:ls)"]      ,
+              \'n': [":tabn"             , "switch to next tab (:tabn)"]     ,
+              \'o': [":tabnew"           , "create new tab (:tabnew)"]       ,
               \}
 
 let windowMenu = { 'name': "window" ,
-              \'+': [":resize +10" , "resize window (10 ^w +)"]          ,
-              \'-': [":resize -10" , "resize window (10 ^w -)"]          ,
-              \'<': [":10 wincmd <", "resize window (10 ^w <)"]          ,
-              \'=': [":wincmd ="   , "resize window to same size (^w =)"],
-              \'>': [":10 wincmd >", "resize window (10 ^w >)"]          ,
-              \'H': [":wincmd H"   , "H move window (^w H)"]             ,
-              \'J': [":wincmd J"   , "J move window (^w J)"]             ,
-              \'K': [":wincmd K"   , "K move window (^w K)"]             ,
-              \'L': [":wincmd L"   , "L move window (^w L)"]             ,
-              \'V': [":sp"         , "horizontal split (:sp)"]           ,
-              \'c': [":wincmd c"   , "close window (^w c)"]              ,
-              \'h': [":wincmd h"   , "h window movement (^w h)"]         ,
-              \'j': [":wincmd j"   , "j window movement (^w j)"]         ,
-              \'k': [":wincmd k"   , "k window movement (^w k)"]         ,
-              \'l': [":wincmd l"   , "l window movement (^w l)"]         ,
-              \'v': [":vs"         , "vertical split (:vs)"]             ,
+              \'+': [":resize +10"             , "resize window (10 ^w +)"]              ,
+              \'-': [":resize -10"             , "resize window (10 ^w -)"]              ,
+              \'<': [":10 wincmd <"            , "resize window (10 ^w <)"]              ,
+              \'=': [":wincmd ="               , "resize window to same size (^w =)"]    ,
+              \'>': [":10 wincmd >"            , "resize window (10 ^w >)"]              ,
+              \'H': [":wincmd H"               , "H move window (^w H)"]                 ,
+              \'J': [":wincmd J"               , "J move window (^w J)"]                 ,
+              \'K': [":wincmd K"               , "K move window (^w K)"]                 ,
+              \'L': [":wincmd L"               , "L move window (^w L)"]                 ,
+              \'V': [":sp"                     , "horizontal split (:sp)"]               ,
+              \'c': [":wincmd c"               , "close window (^w c)"]                  ,
+              \'h': [":wincmd h"               , "h window movement (^w h)"]             ,
+              \'j': [":wincmd j"               , "j window movement (^w j)"]             ,
+              \'k': [":wincmd k"               , "k window movement (^w k)"]             ,
+              \'l': [":wincmd l"               , "l window movement (^w l)"]             ,
+              \'v': [":vs"                     , "vertical split (:vs)"]                 ,
+              \'[': [":wincmd H | vert res 30" , "shift left (:wincmd H | vert res 30)"] ,
+              \']': [":wincmd L | vert res 30" , "shift left (:wincmd L | vert res 30)"] ,
               \}
 
 let openMenu = { 'name': "Open",
@@ -193,13 +195,18 @@ let openMenu = { 'name': "Open",
               \'t': [":vs | term"                    , "open terminal in vsplit (:vs | term)"]         ,
               \}
 
-let g:leaderMenu = {'name':  "Menu",
-              \'b': [bufferMenu    , "Buffers"]                            ,
-              \'o': [openMenu      , "Open"]                               ,
-              \'r': [':so $MYVIMRC', 'Reload config'],
-              \'t': [tabMenu       , "Tabs"]                               ,
-              \'v': [vundleMenu    , "Vundle"]                             ,
-              \'w': [windowMenu    , "Windows"]                            ,
+let configMenu = { 'name' : "Config" ,
+            \'r': [":so $MYVIMRC"    , "Reload config"] ,
+            \'e': [":vs $MYVIMRC"    , "Edit config"]   ,
+            \}
+let g:leaderMenu = {'name':  "Menu" ,
+              \'b': [bufferMenu , "Buffers"] ,
+              \'o': [openMenu   , "Open"]    ,
+              \'r': [configMenu , 'Config']  ,
+              \'n': [":noh"     , ':noh']    ,
+              \'t': [tabMenu    , "Tabs"]    ,
+              \'v': [vundleMenu , "Vundle"]  ,
+              \'w': [windowMenu , "Windows"] ,
               \}
 
 let g:leaderMapperPos = "bottom"
@@ -388,7 +395,6 @@ nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
-
 "-----nmap---------------------------------------------------------------------
 
 "snippet exeample

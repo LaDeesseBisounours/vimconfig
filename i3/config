@@ -36,7 +36,7 @@ bindsym $mod+Shift+Return exec alacritty --class floating_term
 
 
 # reload background
-bindsym $mod+b exec feh --no-fehbg --bg-scale -z ~/Pictures/Wallpapers/*
+bindsym $mod+b exec feh --no-fehbg --bg-scale -z ~/shared/Pictures/Wallpapers/*
 
 # lockscreen
 bindsym $mod+Shift+z exec  i3lock -f -i ~/Pictures/LockScreens/$(ls ~/Pictures/LockScreens | shuf -n 1)
@@ -195,6 +195,6 @@ bar {
         status_command i3blocks
         font pango: mononoki 12
 }
-exec feh --no-fehbg --bg-scale -z ~/Pictures/Wallpapers/*
+exec feh --no-fehbg --bg-scale -z ~/shared/Pictures/Wallpapers/*
 exec xcompmgr -c -n
 exec start-pulseaudio-x11

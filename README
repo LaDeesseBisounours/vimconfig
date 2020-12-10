@@ -1,2 +1,34 @@
-This git contains some of my config file.
-nvim config are commented, for the rest you can have a look around
+This git contains some of my config file:
+
+
+    vim and nvim config (commented to help new users)
+nvim/: hand built config (uses Vundle for plugin management)
+vimrc: old vimrc config (in case I need a quick vim config without downloading Vundle)
+
+    alacritty config
+alacritty/: alacritty config file
+alacritty_opacity/: is a brainless program to rewrite my alacritty opacity
+
+     i3 config
+i3/ 
+i3blocks/ 
+
+    zsh config (uses .oh-my-zsh)
+zshrc 
+custom.zsh-theme zsh custom theme
+
+
+    wrappers scrits
+pamixer_change_volume/: pamixer wrapper to allow +/- NUM operations
+sc.sh: scrot wrapper
+set_up.sh sets up most of my symlinks
+
+
+gitconfig/: git profile
+
+
+    xterm config
+Xresources: xterm configs in case I need to use xterm instead of alacritty 
+
+    bash config
+bashrc: bash config in case I need to use it instead of zsh
