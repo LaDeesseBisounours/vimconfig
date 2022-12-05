@@ -201,44 +201,45 @@ nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
 nnoremap <A-l> <C-w>l
 "-----nmap---------------------------------------------------------------------
+nnoremap <leader>hh :echo "n: next, p: previous, c: close, l: list, o: open/new, k: choose"
 "buffers
-nnoremap <leader>bN :bprevious
-nnoremap <leader>bc :bdelete
-nnoremap <leader>bk :call ChooseBuffer()
-nnoremap <leader>bl :ls
-nnoremap <leader>bn :bnext
+nnoremap <leader>bp :bprevious<CR>
+nnoremap <leader>bc :bdelete<CR>
+nnoremap <leader>bk :call ChooseBuffer()<CR>
+nnoremap <leader>bl :ls<CR>
+nnoremap <leader>bn :bnext<CR>
 
 "tabs
-nnoremap <leader>tN :tabp
-nnoremap <leader>tc :tab close
-nnoremap <leader>tk :call ChooseTab()
-nnoremap <leader>tl :tabs
-nnoremap <leader>tn :tabn
-nnoremap <leader>to :tabnew
+nnoremap <leader>tp :tabp<CR>
+nnoremap <leader>tc :tab close<CR>
+nnoremap <leader>tk :call ChooseTab()<CR>
+nnoremap <leader>tl :tabs<CR>
+nnoremap <leader>tn :tabn<CR>
+nnoremap <leader>to :tabnew<CR>
 
 "windows
-nnoremap <leader>w+ :resize +10
-nnoremap <leader>w- :resize -10
-nnoremap <leader>w< :10 wincmd <
-nnoremap <leader>w= :wincmd =
-nnoremap <leader>w> :10 wincmd >
-nnoremap <leader>wH :wincmd H
-nnoremap <leader>wJ :wincmd J
-nnoremap <leader>wK :wincmd K
-nnoremap <leader>wL :wincmd L
-nnoremap <leader>wV :sp
-nnoremap <leader>wc :wincmd c
-nnoremap <leader>wh :wincmd h
-nnoremap <leader>wj :wincmd j
-nnoremap <leader>wk :wincmd k
-nnoremap <leader>wl :wincmd l
-nnoremap <leader>wv :vs
-nnoremap <leader>w[ :wincmd H | vert res 30
-nnoremap <leader>w] :wincmd L | vert res 30
+nnoremap <leader>w+ :resize +10<CR>
+nnoremap <leader>w- :resize -10<CR>
+nnoremap <leader>w< :10 wincmd <<CR>
+nnoremap <leader>w= :wincmd =<CR>
+nnoremap <leader>w> :10 wincmd ><CR>
+nnoremap <leader>wH :wincmd H<CR>
+nnoremap <leader>wJ :wincmd J<CR>
+nnoremap <leader>wK :wincmd K<CR>
+nnoremap <leader>wL :wincmd L<CR>
+nnoremap <leader>wV :sp<CR>
+nnoremap <leader>wc :wincmd c<CR>
+nnoremap <leader>wh :wincmd h<CR>
+nnoremap <leader>wj :wincmd j<CR>
+nnoremap <leader>wk :wincmd k<CR>
+nnoremap <leader>wl :wincmd l<CR>
+nnoremap <leader>wv :vs<CR>
+nnoremap <leader>w[ :wincmd H | vert res 30<CR>
+nnoremap <leader>w] :wincmd L | vert res 30<CR>
 
 "config
-nnoremap <leader>cr :so $MYVIMRC
-nnoremap <leader>ce :vs $MYVIMRC
+nnoremap <leader>cr :so $MYVIMRC<CR>
+nnoremap <leader>ce :vs $MYVIMRC<CR>
 
 
 "-----map----------------------------------------------------------------------
