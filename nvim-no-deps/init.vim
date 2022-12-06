@@ -254,6 +254,8 @@ cnoreabbrev He vert h
 cnoreabbrev lm lmake
 cnoreabbrev lo lopen
 cnoreabbrev lg lgrep -R '' *<left><left><left>
+cnoreabbrev lgs lgrep -R '' src<left><left><left><left><left>
+cnoreabbrev lgt lgrep -R '' test<left><left><left><left><left><left>
 
 "-----macros-------------------------------------------------------------------
 
