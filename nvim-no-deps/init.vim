@@ -241,6 +241,8 @@ nnoremap <leader>w] :wincmd L | vert res 30<CR>
 nnoremap <leader>cr :so $MYVIMRC<CR>
 nnoremap <leader>ce :vs $MYVIMRC<CR>
 
+"highlight
+nnoremap <leader>nn :noh<CR>
 
 "-----map----------------------------------------------------------------------
 
