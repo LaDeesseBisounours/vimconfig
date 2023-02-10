@@ -90,18 +90,25 @@
 
   (tyrant-def
     ;; buffers
-    "bc" 'kill-this-buffer 
-    "bk" 'switch-to-buffer
-    "bs" 'save-buffer
-    "be" 'eval-buffer
+    "b"  '(:prefix t :which-key "buffers")
+    "bc" '(kill-this-buffer :which-key "close")
+    "bk" '(switch-to-buffer :which-key "switch")
+    "bs" '(save-buffer :which-key "save")
+    "be" '(eval-buffer :which-key "eval")
     ;; tabs
+    "t"  '(:prefix t :which-key "tabs")
     "to" 'tab-new
     "tO" 'tab-bar-new-tab-choice
     "ts" 'tab-switch
     "tr" 'tab-rename
     "tR" 'tab-bar-rename-tab-by-name
+    "tn" 'tab-next
+    "tp" 'tab-previous
     ;; treemacs
-    "ot" 'treemacs
+    "o"  '(:prefix t :which-key "toggle")
+    "ot" '(treemacs :which-key "treemacs open")
     ;; files
+
+    "f"  '(:prefix t :which-key "files")
     "ff" 'find-file
     "xh" 'mark-whole-buffer))
