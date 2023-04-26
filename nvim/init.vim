@@ -49,6 +49,9 @@ Plugin 'plasticboy/vim-markdown'
 " Spacemacs like menu
 Plugin 'dpretet/vim-leader-mapper'
 
+" fzf for file searches
+Plugin 'junegunn/fzf'
+
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
@@ -84,7 +87,6 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-
 "------jellybeans--------------------------------------------------------------
 :colorscheme jellybeans
 
@@ -194,6 +196,9 @@ let openMenu = { 'name': "Open",
               \'n': [":vs . | wincmd H | vert res 30", "open NertTree (:vs . | wincmd H | ver res 30)"],
               \'t': [":vs | term"                    , "open terminal in vsplit (:vs | term)"]         ,
               \}
+let fileMenu = { 'name': "File",
+              \'z': [":FZF"                    , "FZF (:FZF)"]          ,
+              \}
 
 let configMenu = { 'name' : "Config" ,
             \'r': [":so $MYVIMRC"    , "Reload config"] ,
@@ -201,6 +206,7 @@ let configMenu = { 'name' : "Config" ,
             \}
 let g:leaderMenu = {'name':  "Menu" ,
               \'b': [bufferMenu , "Buffers"] ,
+              \'f': [fileMenu   , "File"] ,
               \'o': [openMenu   , "Open"]    ,
               \'r': [configMenu , 'Config']  ,
               \'n': [":noh"     , ':noh']    ,
@@ -414,6 +420,14 @@ noremap <F9> :% !clang-format %
 "-----cabrev-------------------------------------------------------------------
 
 cnoreabbrev He vert h
+cnoreabbrev lm lmake
+cnoreabbrev lo lopen
+cnoreabbrev lg lgrep -R '' *<left><left><left>
+cnoreabbrev lgi lgrep -i -R '' *<left><left><left>
+cnoreabbrev lgs lgrep -R '' src<left><left><left><left><left>
+cnoreabbrev lgsi lgrep -i -R '' src<left><left><left><left><left>
+cnoreabbrev lgt lgrep -R '' test<left><left><left><left><left><left>
+cnoreabbrev lgti lgrep -i -R '' test<left><left><left><left><left><left>
 
 "-----macros-------------------------------------------------------------------
 

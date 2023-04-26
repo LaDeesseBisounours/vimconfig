@@ -66,7 +66,7 @@ HIST_STAMPS="dd.mm.yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git compleat vi-mode zsh-syntax-highlighting)
+plugins=(git compleat vi-mode )
 
 source $ZSH/oh-my-zsh.sh
 
@@ -139,3 +139,5 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 #    bindkey -v
 #    #neofetch
 #fi
+#
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

@@ -1,2 +1,2 @@
 eval $(ssh-agent)
-ssh-add ~/.ssh/rsa_gitlab
+ssh-add ~/.ssh/id_rsa
