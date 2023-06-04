@@ -1,6 +1,5 @@
 require("plugins")
 require("keymaps")
-print("init lua")
 
 local set = vim.opt
 set.tabstop = 4
@@ -14,6 +13,6 @@ set.wrap = true
 set.ruler = true
 set.virtualedit = "all"
 set.hidden = true
-set.clipboard = "unamed"
+--set.clipboard = "unamed"
 
 set.foldmethod = "syntax"
