@@ -428,6 +428,10 @@ cnoreabbrev lgs lgrep -R '' src<left><left><left><left><left>
 cnoreabbrev lgsi lgrep -i -R '' src<left><left><left><left><left>
 cnoreabbrev lgt lgrep -R '' test<left><left><left><left><left><left>
 cnoreabbrev lgti lgrep -i -R '' test<left><left><left><left><left><left>
+cnoreabbrev lmb lmake -C build
+cnoreabbrev lmbj lmake -C build -j 4
+cnoreabbrev lmc lmake -C 
+cnoreabbrev lmcj lmake -j 4 -C 
 
 "-----macros-------------------------------------------------------------------
 
